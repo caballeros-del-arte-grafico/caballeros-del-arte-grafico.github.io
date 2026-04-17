@@ -9,57 +9,30 @@
             background: radial-gradient(circle, #1e1e1e 0%, #000000 100%);
             color: #ffffff;
             font-family: 'Georgia', serif;
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
+            margin: 0; padding: 20px;
+            display: flex; flex-direction: column; align-items: center; text-align: center;
         }
         .header-section { min-height: 80vh; display: flex; flex-direction: column; justify-content: center; align-items: center; }
         img.logo { max-width: 280px; filter: drop-shadow(0 0 15px rgba(255,255,255,0.1)); margin-bottom: 20px; }
         h1 { font-size: 2.2rem; letter-spacing: 4px; text-transform: uppercase; margin: 10px 0; }
         .gold-text { color: #d4af37; font-style: italic; font-size: 1.1rem; margin-bottom: 30px; }
         
-        /* Contenedor de Servicios */
-        .services-grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
-            gap: 25px; 
-            max-width: 1100px; 
-            width: 100%;
-            margin-bottom: 50px;
-        }
-        .card { 
-            background: rgba(255,255,255,0.03); 
-            border: 1px solid #444; 
-            border-radius: 12px; 
-            padding: 25px; 
-            transition: 0.3s;
-            position: relative;
-            overflow: hidden;
-        }
-        .card:hover { border-color: #d4af37; transform: translateY(-5px); background: rgba(212, 175, 55, 0.05); }
+        /* Contenedor de Servicios y Galerías */
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; max-width: 1100px; width: 100%; margin-bottom: 50px; }
+        .card { background: rgba(255,255,255,0.03); border: 1px solid #444; border-radius: 12px; padding: 25px; transition: 0.3s; }
         .card h3 { color: #d4af37; text-transform: uppercase; margin-bottom: 15px; border-bottom: 1px solid #d4af37; padding-bottom: 10px; }
-        .card ul { list-style: none; padding: 0; text-align: left; line-height: 1.8; color: #ddd; }
-        .card ul li::before { content: "• "; color: #d4af37; font-weight: bold; }
+        
+        /* Estilo de fotos en la galería */
+        .grid-fotos { display: grid; grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); gap: 10px; margin-top: 15px; }
+        .foto-item { width: 100%; height: 80px; object-fit: cover; border-radius: 5px; cursor: pointer; border: 1px solid #666; transition: 0.3s; }
+        .foto-item:hover { border-color: #d4af37; transform: scale(1.1); }
 
-        /* Estilo para la imagen del Collage */
-        .collage-img { 
-            width: 100%; 
-            max-width: 800px; 
-            border-radius: 10px; 
-            border: 2px solid #d4af37; 
-            margin-top: 20px;
-            box-shadow: 0 0 20px rgba(0,0,0,0.5);
-        }
+        /* Lightbox (Foto Grande) */
+        #lightbox { display: none; position: fixed; z-index: 1000; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); justify-content: center; align-items: center; }
+        #img-grande { max-width: 90%; max-height: 80%; border: 2px solid #d4af37; border-radius: 10px; }
 
-        .btn-whatsapp {
-            background-color: #25d366; color: white; padding: 18px 40px; 
-            border-radius: 50px; text-decoration: none; font-weight: bold;
-            font-family: sans-serif; transition: 0.3s; margin: 40px 0;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
-        }
+        .collage-img { width: 100%; border-radius: 10px; border: 2px solid #d4af37; margin-top: 20px; }
+        .btn-whatsapp { background-color: #25d366; color: white; padding: 18px 40px; border-radius: 50px; text-decoration: none; font-weight: bold; margin: 40px 0; display: inline-block; position: sticky; bottom: 20px; z-index: 100; }
     </style>
 </head>
 <body>
@@ -68,70 +41,68 @@
         <img src="logo.png" alt="Logo" class="logo">
         <h1>FORJANDO TU IDENTIDAD VISUAL</h1>
         <p class="gold-text">Calidad, honor y precisión en cada impresión.</p>
-        <a href="https://wa.me." class="btn-whatsapp">
-            SOLICITAR COTIZACIÓN POR WHATSAPP
-        </a>
     </div>
 
     <h2 style="letter-spacing: 5px; color: #d4af37;">NUESTRO ARSENAL</h2>
     
     <div class="services-grid">
+        <!-- Sublimación con Galería -->
         <div class="card">
             <h3>Sublimación</h3>
-            <ul>
-                <li>Tazas y Termos</li>
-                <li>Playeras y Gorras</li>
-                <li>Artículos Personalizados</li>
-                <li>Regalos Empresariales</li>
-            </ul>
+            <div class="grid-fotos">
+                <img src="galeria/sublimacion1.jpg" class="foto-item" onclick="abrirImagen(this.src)">
+                <img src="galeria/sublimacion2.jpg" class="foto-item" onclick="abrirImagen(this.src)">
+                <!-- Agrega más fotos aquí -->
+            </div>
         </div>
 
+        <!-- Impresión Digital con Galería -->
         <div class="card">
             <h3>Impresión Digital</h3>
-            <ul>
-                <li>Vinil Autoadherible</li>
-                <li>Lonas de Gran Formato</li>
-                <li>Stickers Personalizados</li>
-                <li>Microperforados</li>
-            </ul>
+            <div class="grid-fotos">
+                <img src="galeria/impresion1.jpg" class="foto-item" onclick="abrirImagen(this.src)">
+                <img src="galeria/impresion2.jpg" class="foto-item" onclick="abrirImagen(this.src)">
+            </div>
         </div>
 
+        <!-- Arte Digital -->
         <div class="card">
             <h3>Arte Digital</h3>
-            <ul>
-                <li>Diseño de Logotipos</li>
-                <li>Vectorización de Archivos</li>
-                <li>Retoque Digital</li>
-                <li>Publicidad Visual</li>
-            </ul>
+            <div class="grid-fotos">
+                <img src="galeria/diseno1.jpg" class="foto-item" onclick="abrirImagen(this.src)">
+            </div>
         </div>
 
+        <!-- Rotulación -->
         <div class="card" style="grid-column: 1 / -1;">
             <h3>Rama de Rotulación Profesional</h3>
-            <p style="font-size: 0.9rem; color: #aaa;">Expertos en proyectos de gran escala y alturas.</p>
-            <img src="collage.jpg" alt="Trabajos de Rotulación" class="collage-img">
-            <ul style="margin-top:20px; display: grid; grid-template-columns: 1fr 1fr;">
-                <li>Anuncios Espectaculares</li>
-                <li>Rotulación de Flotillas</li>
-                <li>Señalética Industrial</li>
-                <li>Estructuras Metálicas</li>
-            </ul>
+            <img src="collage.jpg" alt="Rotulación" class="collage-img">
         </div>
     </div>
-    <!-- SECCIÓN DEL MAPA INTERACTIVO -->
-    <h2 style="letter-spacing: 5px; color: #d4af37; margin-top: 60px;">NUESTRO CUARTEL</h2>
-    <p style="color: #aaa; margin-bottom: 20px;">Visítanos en San Pablo Autopan para tus proyectos a gran escala.</p>
-    
+
+    <!-- MAPA INTERACTIVO -->
+    <h2 style="letter-spacing: 5px; color: #d4af37;">NUESTRO CUARTEL</h2>
     <div style="width: 100%; max-width: 900px; border: 2px solid #d4af37; border-radius: 12px; overflow: hidden; margin-bottom: 50px;">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3763.9742493401623!2d-99.68037584517273!3d19.370267642784366!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d276e2add34cd3%3A0x9e1485ca3503082a!2sRevoluci%C3%B3n%20Manzana%20002%2C%20Galaxia%2C%2050290%20San%20Pablo%20Autopan%2C%20M%C3%A9x.!5e0!3m2!1ses-419!2smx!4v1776397194024!5m2!1ses-419!2smx" 
-            width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
+        <iframe src="https://google.com" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
     </div>
 
+    <!-- BOTÓN WHATSAPP -->
+    <a href="https://wa.me/527209176036" class="btn-whatsapp">SOLICITAR COTIZACIÓN</a>
 
-    <!-- BOTÓN DE CONTACTO FLOTANTE (Opcional, para que siempre esté a la mano) -->
-    <a href="https://wa.me." class="btn-whatsapp" style="position: sticky; bottom: 20px; z-index: 100;">
-        SOLICITAR COTIZACIÓN POR WHATSAPP
+    <!-- LIGHTBOX -->
+    <div id="lightbox" onclick="this.style.display='none'">
+        <img id="img-grande" src="">
+    </div>
+
+    <script>
+        function abrirImagen(src) {
+            document.getElementById('img-grande').src = src;
+            document.getElementById('lightbox').style.display = 'flex';
+        }
+    </script>
+</body>
+</html>
+
     </a>
 
 </body>
