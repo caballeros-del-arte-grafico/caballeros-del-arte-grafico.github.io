@@ -10,57 +10,114 @@
             color: #ffffff;
             font-family: 'Georgia', serif;
             margin: 0;
+            padding: 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            height: 100vh;
             text-align: center;
         }
-        img {
-            max-width: 320px;
-            margin-bottom: 30px;
-            filter: drop-shadow(0 0 15px rgba(255,255,255,0.1));
-            transition: transform 0.3s ease;
+        .header-section { min-height: 80vh; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+        img.logo { max-width: 280px; filter: drop-shadow(0 0 15px rgba(255,255,255,0.1)); margin-bottom: 20px; }
+        h1 { font-size: 2.2rem; letter-spacing: 4px; text-transform: uppercase; margin: 10px 0; }
+        .gold-text { color: #d4af37; font-style: italic; font-size: 1.1rem; margin-bottom: 30px; }
+        
+        /* Contenedor de Servicios */
+        .services-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            gap: 25px; 
+            max-width: 1100px; 
+            width: 100%;
+            margin-bottom: 50px;
         }
-        h1 {
-            font-size: 2.5rem;
-            letter-spacing: 5px;
-            margin: 10px 0;
-            text-transform: uppercase;
+        .card { 
+            background: rgba(255,255,255,0.03); 
+            border: 1px solid #444; 
+            border-radius: 12px; 
+            padding: 25px; 
+            transition: 0.3s;
+            position: relative;
+            overflow: hidden;
         }
-        p {
-            font-size: 1.2rem;
-            color: #d4af37;
-            font-style: italic;
+        .card:hover { border-color: #d4af37; transform: translateY(-5px); background: rgba(212, 175, 55, 0.05); }
+        .card h3 { color: #d4af37; text-transform: uppercase; margin-bottom: 15px; border-bottom: 1px solid #d4af37; padding-bottom: 10px; }
+        .card ul { list-style: none; padding: 0; text-align: left; line-height: 1.8; color: #ddd; }
+        .card ul li::before { content: "• "; color: #d4af37; font-weight: bold; }
+
+        /* Estilo para la imagen del Collage */
+        .collage-img { 
+            width: 100%; 
+            max-width: 800px; 
+            border-radius: 10px; 
+            border: 2px solid #d4af37; 
+            margin-top: 20px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
         }
-        /* Estilo del Botón de WhatsApp */
+
         .btn-whatsapp {
-            margin-top: 30px;
-            display: inline-block;
-            background-color: #25d366;
-            color: white;
-            padding: 15px 30px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: bold;
-            font-family: sans-serif;
-            transition: background 0.3s ease;
-        }
-        .btn-whatsapp:hover {
-            background-color: #128c7e;
+            background-color: #25d366; color: white; padding: 18px 40px; 
+            border-radius: 50px; text-decoration: none; font-weight: bold;
+            font-family: sans-serif; transition: 0.3s; margin: 40px 0;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
         }
     </style>
 </head>
 <body>
-    <img src="logo.png" alt="Logotipo Caballeros del Arte Gráfico">
-    <h1>FORJANDO TU IDENTIDAD VISUAL</h1>
-    <p>Calidad, honor y precisión en cada impresión.</p>
 
-    <!-- AQUÍ PONES TU NÚMERO (Sin espacios ni símbolos) -->
-    <a href="https://wa.me/527209176036" class="btn-whatsapp">
-        SOLICITAR COTIZACIÓN POR WHATSAPP
-    </a>
+    <div class="header-section">
+        <img src="logo.png" alt="Logo" class="logo">
+        <h1>FORJANDO TU IDENTIDAD VISUAL</h1>
+        <p class="gold-text">Calidad, honor y precisión en cada impresión.</p>
+        <a href="https://wa.me." class="btn-whatsapp">
+            SOLICITAR COTIZACIÓN POR WHATSAPP
+        </a>
+    </div>
+
+    <h2 style="letter-spacing: 5px; color: #d4af37;">NUESTRO ARSENAL</h2>
+    
+    <div class="services-grid">
+        <div class="card">
+            <h3>Sublimación</h3>
+            <ul>
+                <li>Tazas y Termos</li>
+                <li>Playeras y Gorras</li>
+                <li>Artículos Personalizados</li>
+                <li>Regalos Empresariales</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>Impresión Digital</h3>
+            <ul>
+                <li>Vinil Autoadherible</li>
+                <li>Lonas de Gran Formato</li>
+                <li>Stickers Personalizados</li>
+                <li>Microperforados</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>Arte Digital</h3>
+            <ul>
+                <li>Diseño de Logotipos</li>
+                <li>Vectorización de Archivos</li>
+                <li>Retoque Digital</li>
+                <li>Publicidad Visual</li>
+            </ul>
+        </div>
+
+        <div class="card" style="grid-column: 1 / -1;">
+            <h3>Rama de Rotulación Profesional</h3>
+            <p style="font-size: 0.9rem; color: #aaa;">Expertos en proyectos de gran escala y alturas.</p>
+            <img src="collage.jpg" alt="Trabajos de Rotulación" class="collage-img">
+            <ul style="margin-top:20px; display: grid; grid-template-columns: 1fr 1fr;">
+                <li>Anuncios Espectaculares</li>
+                <li>Rotulación de Flotillas</li>
+                <li>Señalética Industrial</li>
+                <li>Estructuras Metálicas</li>
+            </ul>
+        </div>
+    </div>
 
 </body>
 </html>
